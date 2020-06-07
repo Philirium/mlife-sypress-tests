@@ -1,0 +1,154 @@
+/// <reference types="cypress" />
+
+//import Chance from 'chance'
+
+// const chanse = new Chance()
+
+describe( ' ГЛАВНАЯ СТРАНИЦА (HOME PAGE MLIFE) ', () => {
+
+    beforeEach( ()=> {
+        cy.kcLogout();
+        cy.kcLogin("user")
+        cy.visit('http://localhost:4200')
+    });
+
+   
+
+    // it(' [ ГЛАВНАЯ СТРАНИЦА MLIFE - ВИДЖЕТ БК]', () => {
+    //     cy.wait(10000);
+    //     cy.url().should('include', 'http://localhost:4200/home');
+        
+    //     cy.log('**[тест виджета БК на главной](http://example.com)**' )
+    //     cy.log('**отображение иконок: инициатор/наблюдатель/исполнитель**' )
+    //     cy.get('#mat-tab-label-2-0 > .mat-tab-label-content > .label-wrap > .mat-icon').should("be.visible");
+    //     cy.get('#mat-tab-label-2-1 > .mat-tab-label-content > .label-wrap > .mat-icon').should("be.visible");
+    //     cy.get('#mat-tab-label-2-2 > .mat-tab-label-content > .label-wrap > .mat-icon').should("be.visible");
+
+    //     cy.log('**кнопка "СМОТРЕТЬ ВСЕ"**' )
+    //     cy.get('#desktop-widget > .buscom-widget-main__show-all > .mat-focus-indicator').should("be.visible");
+    //     cy.get('#desktop-widget > .buscom-widget-main__show-all > .mat-focus-indicator > .mat-button-wrapper').contains(' СМОТРЕТЬ ВСЁ ');
+
+
+    //     // СПИСОК БК В ВИДЖЕТЕ ИНИЦИАТОР
+    //     cy.log('**[инициатор] - отображение: список бк / статусы бк**' );
+    //     cy.get('#mat-tab-content-2-0 > .mat-tab-body-content > app-buscom-widget-init.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should("be.visible");
+    //     cy.get('#mat-tab-content-2-0 > .mat-tab-body-content > app-buscom-widget-init.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+    //     cy.get('#mat-tab-content-2-0 > .mat-tab-body-content > app-buscom-widget-init.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(2) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should("be.visible");
+    //     cy.get('#mat-tab-content-2-0 > .mat-tab-body-content > app-buscom-widget-init.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(2) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+        
+    //     // СПИСОК БК В ВИДЖЕТЕ НАБЛЮДАТЕЛЬ
+    //     cy.get('#mat-tab-label-2-1').click()
+    //     cy.log('**[наблюдатель] - отображение: список бк / статусы бк**' );
+    //     cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should("be.visible");
+        
+    //     cy.log('**[наблюдатель] - проверка имени БК**' );
+    //     cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').invoke('text').then((text) => {
+    //         cy.log(text, ' - название бк ');
+    //         cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should('contain.text', text)
+    //     });
+    //     cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+    //     cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(2) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should("be.visible");
+    //     cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(2) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+        
+    //     // СПИСОК БК В ВИДЖЕТЕ ИСПОЛНИТЕЛЬ
+    //     cy.get('#mat-tab-label-2-2').click();
+    //     cy.log('**[исполнитель] - отображение: список бк / статусы бк**' );
+    //     cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should("be.visible");
+    //     cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+
+    //     cy.log('**[исполнитель] - проверка имени БК**' );
+    //     cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').invoke('text').then((text) => {
+    //         cy.log(text, ' - название бк ');
+    //         cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should('contain.text', text)
+    //     });
+    //     cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(2) > .mat-list-item-content > .buscom-widget__item > .buscom-widget__main > .buscom-widget__title').should("be.visible");
+    //     cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(2) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+
+    //     //ТЕСТ КЛИКАБЕЛЬНОСТИ КНОПОК В ВИДЖЕТЕ 
+    //     cy.log('**проверка кликабельности виджета бк**' );
+    //     cy.get('#mat-tab-label-2-1').click().then(() => {
+    //         cy.get('app-buscom-widget-watcher.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+    //     })
+
+    //     cy.get('#mat-tab-label-2-2').click().then(() => {
+    //         cy.get('app-buscom-widget-doer.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+    //     })
+
+    //     cy.get('#mat-tab-label-2-0').click().then(() => {
+    //         cy.get('#mat-tab-content-2-0 > .mat-tab-body-content > app-buscom-widget-init.ng-star-inserted > .buscom-widget > :nth-child(1) > :nth-child(1) > .mat-list-item-content > .buscom-widget__item > app-buscom-user-status.ng-star-inserted > .wrapper > .mat-icon').should("be.visible");
+    //     })
+
+    //     // ТЕСТ РАБОТЫ КНОПКИ ПОСМОТРЕТЬ ВСЕ 
+    //     cy.log('**[инициатор] - проверка кликабельности кнопки "СМОТРЕТЬ ВСЕ" бк**' );
+    //     cy.get('#desktop-widget > .buscom-widget-main__show-all > .mat-focus-indicator').click();
+    //     cy.url().should('include', 'http://localhost:4200/communications/init');
+    //     cy.get('.breadcrumbs__title').contains('Отправленные коммуникации');
+    //     cy.get(':nth-child(1) > .submenu > :nth-child(1) > .menu-item').click();
+
+    //     cy.log('**[наблюдатель] - проверка кликабельности кнопки "СМОТРЕТЬ ВСЕ" бк**' );
+    //     cy.get('#mat-tab-label-5-1').click()
+    //     cy.get('#desktop-widget > .buscom-widget-main__show-all > .mat-focus-indicator').click();
+    //     cy.url().should('include', 'http://localhost:4200/communications/observer');
+    //     cy.get('.breadcrumbs__title').contains('Наблюдаемые коммуникации');
+    //     cy.get(':nth-child(1) > .submenu > :nth-child(1) > .menu-item').click();
+
+    //     cy.log('**[исполнитель] - проверка кликабельности кнопки "СМОТРЕТЬ ВСЕ" бк**' );
+    //     cy.get('#mat-tab-label-8-2').click();
+    //     cy.get('#desktop-widget > .buscom-widget-main__show-all > .mat-focus-indicator').click();
+    //     cy.url().should('include', 'http://localhost:4200/communications/do');
+    //     cy.get('.breadcrumbs__title').contains('Коммуникации на выполнение');
+    //     cy.get(':nth-child(1) > .submenu > :nth-child(1) > .menu-item').click();   
+        
+    // })
+
+    it(' [ ГЛАВНАЯ СТРАНИЦА MLIFE - ЛЕНТА НОВСТЕЙ]', () => {
+        // ОТОБРАЖЕНИЕ ТЕКСТА В ПОСТЕ
+        cy.wait(3000);
+        cy.log('**Проверка отображения контента**' );
+        cy.get('#content-block_text_test').invoke('text').then(text => {
+            cy.log(text);
+            expect(text).to.have.length.of.greaterThan(0)
+        })
+        // ПРОВЕРКА КНОПКИ ЧИТАТЬ ДАЛЛЕЕ
+        cy.get('#post__read-more_test').click({force: true})
+        cy.get('#post__read-more_clouse-test').click({force: true});
+
+        cy.log('**Проверка отображения контента при клике "ЧИТАТЬ ДАЛЕЕ"**' );
+        cy.get('#post__read-more_clouse-test').invoke('text').should('eq', 'Свернуть пост' );
+        cy.get(':nth-child(4) > #content-block_text_test').invoke('text').then(text => {
+            cy.log(text);
+            expect(text).to.have.length.of.greaterThan(0)
+        })
+        cy.wait(3000);
+        
+        cy.get('#post__read-more_clouse-test').click({force: true});
+        cy.get('#content-block_text_test').invoke('text').then(text => {
+            cy.log(text);
+            expect(text).to.have.length.of.greaterThan(0)
+        });
+        cy.get('#post__read-more_test').invoke('text').should('eq', 'Читать далее...' );
+        cy.get('#layout__content-wrapper_test').scrollTo('bottom');
+        cy.wait(1000)
+        cy.get('#layout__content-wrapper_test').scrollTo(0, 2000)
+        cy.wait(1000)
+        cy.get('#layout__content-wrapper_test').scrollTo('bottom');
+        cy.wait(1000)
+        cy.get('#post__read-more_test').invoke('text').should('eq', 'Читать далее...' );
+        cy.wait(3000);
+        cy.get('#post__read-more_test').click({force: true});
+        cy.get('#post__read-more_test').click({force: true});
+        cy.get('#post__read-more_test').click({force: true});
+        cy.get('#post__read-more_test').click({force: true});
+        cy.get('#post__read-more_test').click({force: true});
+        cy.wait(4000)
+        cy.get('#post__read-more_clouse-test').click({force: true});
+        cy.get('#layout__content-wrapper_test').scrollTo('bottom');
+        cy.wait(3000)
+        cy.get('#news-list-button-container_test').click({force: true});
+        
+
+        //cy.get('#post__read-more_clouse-test').invoke('text').should('eq', 'Свернуть пост' );  
+    });
+
+   
+});
